@@ -1,0 +1,22 @@
+
+header{
+    height: 75px;
+    background-color: rgb(98, 105, 100);
+    padding:10px;
+    color: white;
+}
+
+header .logo{
+    text-transform: uppercase;
+    font-weight: bold;
+    
+}
+
+header nav ul li a{
+    color: white;
+    text-transform: capitalize;
+    font-weight: bold;
+}
+header nav ul li:hover a{
+    color: rgb(80, 148, 145);
+}

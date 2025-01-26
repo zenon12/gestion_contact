@@ -1,0 +1,38 @@
+
+.container-list{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.container-list .search-bar input{
+    border: 1px solid rgb(98, 105, 100);
+    width: 300px;
+    border-radius: 5px ;
+}
+.container-list .search-bar button:hover{
+    
+    background-color: rgb(80, 148, 145);
+}
+.container-list .search-bar button{
+    background-color: rgb(98, 105, 100);
+    color: white;
+    font-weight: bold;
+    border-radius: 5px ;
+    padding: 10px;
+}
+.container-list table{
+    border-collapse: collapse;
+}
+.container-list th,
+.container-list td{
+    border: 1px solid rgb(98, 105, 100);
+    padding: 10px;
+}
+
+
+.btn-danger{
+    background-color: red;
+}
+.btn-update{
+    background-color: rgb(80, 148, 145);
+}

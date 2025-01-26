@@ -1,0 +1,39 @@
+.container-profil{
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 10px;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, 20%);
+}
+.container-profil .profil-title h2{
+    text-align: center;
+    text-transform: uppercase;
+}
+.container-profil .details .row{
+    margin-bottom: 15px;
+}
+.container-profil .details .row-btn a{
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: rgb(80, 148, 145);
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+
+
+
+/**  Edit profile
+*/
+
+.edit-form .form-btn button{
+    margin: 10px 0;
+    background-color: rgb(80, 148, 145);
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    text-transform: uppercase;
+}
