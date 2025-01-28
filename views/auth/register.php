@@ -9,8 +9,10 @@
             <div class="form-register">
                 <form method="post" id="register">
                     <div class="form-row flex gap-5">
-                        <input type="text" class="flex-1" name="first_name" id="firstname" placeholder="Your firstname...">
-                        <input type="text" class="flex-1" name="last_name" id="lastname" placeholder="Your lastname...">
+                        <input type="text" class="flex-1" name="first_name" id="firstname"
+                        value="<?php echo isset($_POST["first_name"])? $_POST["first_name"] :"" ?>" placeholder="Your firstname...">
+                        <input type="text" class="flex-1" name="last_name" id="lastname"
+                        value="<?php echo isset($_POST["last_name"])? $_POST["last_name"] :"" ?>" placeholder="Your lastname...">
                     </div>
                     <div class="error-name flex gap-10 jcsb">
                         <div class="form-error error-firstname">
@@ -19,12 +21,15 @@
                         </div>
                     </div>
                     <div class="form-row flex">
-                        <input type="email" class="flex-1" name="email" id="email" placeholder="Your email...">
+                        <input type="email" class="flex-1" name="email" id="email"
+                        value="<?php echo isset($_POST["email"])? $_POST["email"] :"" ?>" placeholder="Your email...">
                     </div>
                     <div class="form-error error-email">
+                       <?php echo isset($error)? $error :"" ?>
                     </div>
                     <div class="form-row flex">
-                        <input type="number" class="flex-1" name="phone" id="phone" placeholder="Your phone...">
+                        <input type="number" class="flex-1" name="phone" id="phone"
+                        value="<?php echo isset($_POST["phone"])? $_POST["phone"] :"" ?>" placeholder="Your phone...">
                     </div>
                     <div class="form-error error-phone">
                     </div>

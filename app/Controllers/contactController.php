@@ -11,7 +11,6 @@ class contactController
         $this->contact_model=$contact_model ;
     }
 
-
     public function addUserContact()
     {
        

@@ -11,7 +11,12 @@
       }
 
       function createContact($data)
-      {  $sql="INSERT INTO contacts (user_id,first_name,last_name,email,
+      { if (Utilities::checkEmail($data["email"],"contacts",$this->pdo)) {
+            $error="cet email est dejà associer à un contact existant." ;
+            require "views/users/addContact.php" ; exit ;
+        }
+
+        $sql="INSERT INTO contacts (user_id,first_name,last_name,email,
            phone,adresse,description) VALUES 
            (:user_id,:first_name,:last_name,:email,:phone,:adresse,:description)" ;
          $stmt=$this->pdo->prepare($sql) ;
@@ -98,7 +103,11 @@
       }
 
       function createExternalContact($data)
-      {  $sql="INSERT INTO external_contacts (first_name,last_name,email,
+      {  if (Utilities::checkEmail($data["email"],"external_contacts",$this->pdo)) {
+            $error="cet email est dejà associer à un contact existant." ;
+            require "views/users/addContact.php" ; exit ;
+        }
+        $sql="INSERT INTO external_contacts (first_name,last_name,email,
            phone,adresse,description) VALUES 
            (:first_name,:last_name,:email,:phone,:adresse,:description)" ;
          $stmt=$this->pdo->prepare($sql) ;

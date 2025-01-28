@@ -22,7 +22,7 @@ Application web de gestion de contacts basique développée en PHP avec MySQL co
 - Inscription et connexion
 - La page de profile de l'utilisateur
 - Consultation de la liste des contacts
-- Ajouter un contact(connecté seulement)
+- Ajouter un contact
 
 ### Pour les utilisateurs connectés
 
@@ -90,9 +90,9 @@ Application web de gestion de contacts basique développée en PHP avec MySQL co
 
 ### Ajouter un contact
 
-1. Connectez-vous avec un compte utilisateur
+1. Vous pouvez ajouter un contact sans être connecté 
 2. Cliquez sur "Ajouter Contact" pour ajouter un contact
-3. Consultez vos contacts en cliquant sur "Accueil" 
+3. Consultez vos contacts en cliquant sur "Accueil"(ou contacts) 
 
 
 ## 🗂️ Structure du projet

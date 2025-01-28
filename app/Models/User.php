@@ -9,7 +9,10 @@ class User
   }
 
   public function register($data)
-  {
+  { if (Utilities::checkEmail($data["email"],"users",$this->pdo)) {
+            $error="cet email est dejà associer à un compte existant." ;
+            require "views/auth/register.php" ; exit ;
+    }
     $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
     $stmt = $this->pdo->prepare("
       INSERT INTO users 
