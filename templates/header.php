@@ -17,10 +17,11 @@
         <ul class="unlisted flex gap-10 jcc aic">
             <?php if(isset($_SESSION["user"])): ?>
             <li class="nav-item"><a href="/">Accueil</a></li>
-            <li class="nav-item"><a href="/?route=add_contact">Ajouter contact</a></li>
             <li class="nav-item"><a href="/?route=profile">Profile</a></li>
             <li class="nav-item"><a href="/?route=logout">Deconnexion</a></li>
             <?php else : ?>
+            <li class="nav-item"><a href="/?route=external_contact">Contacts</a></li>
+            <li class="nav-item"><a href="/?route=add_contact">Ajouter contact</a></li>
             <li class="nav-item"><a href="/?route=register">Inscription</a></li>
             <li class="nav-item"><a href="/?route=login">Connexion</a></li>
             <?php endif ; ?>

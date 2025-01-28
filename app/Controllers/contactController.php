@@ -14,22 +14,24 @@ class contactController
 
     public function addUserContact()
     {
-        if (isset($_SESSION["user"])) {
-            if (!empty($_POST)) {
+       
+        if (!empty($_POST)) {
                 $data=Utilities::trimData($_POST) ;
-                $data["user_id"]=$_SESSION["user"]["id"] ;
-                $result=$this->contact_model->createContact($data) ;
+                if (isset($_SESSION["user"])) {
+                    $data["user_id"]=$_SESSION["user"]["id"] ;
+                    $result=$this->contact_model->createContact($data) ;
+                }else {
+                    
+                    $result=$this->contact_model->createExternalContact($data) ;
+                }
                 if ($result) {
                     //Contact ajouter avec succes
                     $success="Le contact a été ajouter dans la liste des contacts" ;
                 }else{
                     $fail="Echec d'ajout du contact" ;
                 }
-            }else {
-                //$fail="Veuillez remplir le formulaire svp" ;
-            }
         }else {
-            $fail="Connecter vous pour ajouter un contact à votre repertoire" ;
+                //$fail="Veuillez remplir le formulaire svp" ;
         }
 
         require "views/users/addContact.php" ; 
@@ -40,20 +42,26 @@ class contactController
         if (isset($_SESSION["user"])){
             $user_id=$_SESSION["user"]["id"] ;
             $result=$this->contact_model->getContactsUser($user_id) ;
-            if ($result && sizeof($result) !== 0) {
-                $contacts=$result ;
-                // print_r($contacts); exit ;
-            }else{
-                $message="La liste des contacts est vide !!!" ;
-            }
-            require "views/users/listContact.php" ; exit ;
+        }else {
+            $result=$this->contact_model->getExternalContacts() ;
         }
-        header("Location: /?route=login");
+        if ($result && sizeof($result) !== 0) {
+            $contacts=$result ;
+            // print_r($contacts); exit ;
+        }else{
+            $message="La liste des contacts est vide !!!" ;
+        }
+        require "views/users/listContact.php" ; exit ;
+        
     }
 
     public function delete($contact_id)
-    {
-        if ($this->contact_model->deleteContact($contact_id)) {
+    {   if (isset($_SESSION["user"])) {
+            $table="contacts" ;
+         }else {
+            $table="external_contacts" ;
+         }
+        if ($this->contact_model->deleteContact($contact_id,$table)) {
             //contact supprimer
             header("Location: /") ;
         }else {
@@ -62,20 +70,21 @@ class contactController
     }
 
     public function update($contact_id)
-    {
+    {   if (isset($_SESSION["user"])) {
+                $table="contacts" ;
+        }else{
+                $table="external_contacts" ;
+        }
         if (!empty($_POST)) {
             $data=Utilities::trimData($_POST) ;
-            $dateTime=new Datetime() ;
-            $dateTime=$dateTime->format("Y-m-d H:i:s") ;
-            $data["updatedAt"]=$dateTime ;
-            if ($this->contact_model->updateContact($contact_id,$data)) {
+            if ($this->contact_model->updateContact($contact_id,$data,$table)) {
                 //mise à jour reussie
                 header("Location: /") ; exit ; 
             }else {
                 //echec du mise à jour
             }
         }
-        $contact=$this->contact_model->getContactsById($contact_id) ;
+        $contact=$this->contact_model->getContactsById($contact_id,$table) ;
         require "views/users/updateContact.php" ;
     }
 
@@ -85,13 +94,19 @@ class contactController
             $_POST=Utilities::trimData($_POST) ;
             $selectValue=$_POST["get_by"] ;
             $search=$_POST["search"] ;
-            $contacts=$this->contact_model->getContactBy_($selectValue,$search) ;
+            if (isset($_SESSION["user"])) {
+                $table="contacts" ;
+            }else {
+                $table="external_contacts" ;
+            }
+            $contacts=$this->contact_model->getContactBy_($selectValue,$search,$table) ;
             // print_r($contacts) ; exit ;
             if ($contacts) {
                 //found contact
                 require "views/users/listContact.php" ;
             }else {
                 //on n'a pas trouvé le contact
+                
             }
         }
         

@@ -37,6 +37,9 @@ switch ($route) {
   case 'searchContact':
     $contactController->searchContact();
     break;
+  case 'external_contact':
+    $contactController->displayContact();
+    break;
   
     // Route par défaut
   default:

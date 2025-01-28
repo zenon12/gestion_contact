@@ -84,6 +84,8 @@ class AuthController
         }
         require "views/auth/edit_profile.php" ; exit ;
     }
+
+    
 }
 
 

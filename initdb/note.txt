@@ -7,7 +7,7 @@
   Nom de la base de donnée: contact_db
 
   ********************* Les tables ****************************
-    ** La table user permet de stocker les utilisateurs du site 
+  ** La table user permet de stocker les utilisateurs du site 
   users(id,fullName,email,phone,description,password,reset_token,reset_token_expires,createdAt,updatedAt)
-   ** La table contact permet de stocker les contacts des utilisateurs
+  ** La table contact permet de stocker les contacts des utilisateurs
   contacts(id,user_id,fullName,email,phone,description,adresse,createdAt,updatedAt) ;
